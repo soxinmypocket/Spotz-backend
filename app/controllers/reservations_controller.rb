@@ -9,7 +9,6 @@ class ReservationsController < ApplicationController
 
     def create
         @reservation = Reservation.create(reservation_params)
-        #redirect_to showreservations_path(params[:reservation][:user_id])
     end
 
     def edit      
@@ -18,14 +17,12 @@ class ReservationsController < ApplicationController
 
     def update        
         @reservation = Reservation.find(params[:id])        
-        @reservation.update(reservation_params)  
-        #redirect_to showreservations_path(params[:reservation][:user_id])    
+        @reservation.update(reservation_params)    
     end 
 
     def destroy       
        @reservation = Reservation.find(params[:id])        
-       @reservation.destroy    
-       #redirect_back fallback_location: showreservations_path #(@reservation)    
+       @reservation.destroy       
     end
 
     private
