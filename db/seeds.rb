@@ -3,11 +3,11 @@
 
 
 require 'csv'  
-filename = "/Users/shawnaejohnson/Development/Spotz_React/backend/assets/Black_Owned_Restaurants.csv"
+filename = File.read("/Users/shawnaejohnson/Downloads/Black_Owned_Restaurants.csv")
 
-csv = CSV.parse(filename, :headers => true)
+csv = CSV.parse(filename, :headers => true, encoding:'iso-8859-1')
 csv.each do |row|
   Restaurant.create!(row.to_hash)
 end
 
-puts "done seeding!"
+puts "Done seeding!"
