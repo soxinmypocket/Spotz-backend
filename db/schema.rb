@@ -20,8 +20,12 @@ ActiveRecord::Schema.define(version: 2020_12_16_042157) do
     t.integer "party_size"
     t.string "date"
     t.string "time"
+    t.bigint "user_id", null: false
+    t.bigint "restaurant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_reservations_on_restaurant_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -44,4 +48,6 @@ ActiveRecord::Schema.define(version: 2020_12_16_042157) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "reservations", "restaurants"
+  add_foreign_key "reservations", "users"
 end
